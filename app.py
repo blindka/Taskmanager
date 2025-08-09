@@ -9,7 +9,8 @@
 # json - for working with JSON data
 # os - for interacting with the operating system
 # datetime - for working with dates and times
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+# send_from_directory - serve files from a specific directory
+from flask import Flask, render_template, request, redirect, send_from_directory, url_for, jsonify
 import json
 import os
 from datetime import datetime

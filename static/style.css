@@ -120,7 +120,7 @@ h1 {
 }
 
 .delete-btn {
-    background: #F96262;
+    background: #8FA7EB;
     color: white;
 }
 
@@ -129,7 +129,7 @@ h1 {
     color: white;
     border: none;
     padding: 5px 8px;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 12px;
     margin-left: 5px;
@@ -140,7 +140,7 @@ h1 {
     color: white;
     border: none;
     padding: 5px 8px;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 12px;
     margin-left: 3px;
