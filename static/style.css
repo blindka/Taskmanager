@@ -94,7 +94,9 @@ h1 {
     color: white;
     border: none;
     padding: 8px;
-    border-radius: 3px;
+    border-radius: 5px;
+    min-width: 30px;
+    text-align: center;
     cursor: pointer;
     font-size: 14px;
 }
@@ -106,7 +108,9 @@ h1 {
 .complete-btn, .delete-btn {
     padding: 8px;
     text-decoration: none;
-    border-radius: 3px;
+    min-width: 30px;
+    border-radius: 5px;
+    text-align: center;
     font-size: 14px;
 }
 
@@ -116,7 +120,7 @@ h1 {
 }
 
 .delete-btn {
-    background: #dc3545;
+    background: #F96262;
     color: white;
 }
 

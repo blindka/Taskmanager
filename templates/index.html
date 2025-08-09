@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>System to manage tasks</title>
+    <title>Task manager</title>
+    <link rel="icon" type="image/x-icon" href="images/taskmanager.ico">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -13,7 +14,7 @@
         
         <!-- form to adding tasks-->
         <form method="POST" action="/add" class="add-form">
-            <input type="text" name="task" placeholder="Enter new task..." required>
+            <input type="text" name="task" placeholder="Enter a new task" required>
             <button type="submit">Add task</button>
         </form>
 
