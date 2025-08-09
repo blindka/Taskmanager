@@ -1,4 +1,4 @@
-# Taskmanager - website to manage taks
+# Taskmanager - website to manage tasks
 
 **self learning project - python, flask, html and css**
 
