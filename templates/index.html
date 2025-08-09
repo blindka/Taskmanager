@@ -21,7 +21,10 @@
         <div class="tasks-list">
             {% for task in tasks %}
             <div class="task-item {% if task.completed %}completed{% endif %}">
-                <span class="task-text">{{ task.text }}</span>
+                <span class="task-text" onclick="editTask({{ task.id }}, '{{ task.text }}')" id="task-text-{{ task.id }}">{{ task.text }}</span>
+                <form style="display: none;" id="edit-form-{{ task.id }}" onsubmit="saveTask({{ task.id }}); return false;">
+                <input type="text" id="edit-input-{{ task.id }}" value="{{ task.text }}" onblur="cancelEdit({{ task.id }})" onkeyup="handleKey(event, {{ task.id }})">
+            </form>
                 <span class="task-date">{{ task.created_at }}</span>
                 <div class="task-actions">
                     {% if not task.completed %}
@@ -33,3 +36,53 @@
             </div>
             {% endfor %}
         </div>
+    <script>
+function editTask(taskId, currentText) {
+    document.getElementById('task-text-' + taskId).style.display = 'none'; // hide the original text
+    
+    var form = document.getElementById('edit-form-' + taskId); // display the edit form
+    form.style.display = 'inline';
+    
+    var input = document.getElementById('edit-input-' + taskId); // focus on the input field
+    input.focus();
+    input.select(); // display the entire text 
+}
+function saveTask(taskId) {
+    var input = document.getElementById('edit-input-' + taskId);
+    var newText = input.value.trim();
+    
+    if (newText === '') {
+        alert('הטקסט לא יכול להיות ריק!');
+        return;
+    }
+    
+    var form = document.createElement('form'); // create a new form and send to the server
+    form.method = 'POST';
+    form.action = '/edit/' + taskId;
+    
+    var textInput = document.createElement('input');
+    textInput.type = 'hidden';
+    textInput.name = 'new_text';
+    textInput.value = newText;
+    
+    form.appendChild(textInput);
+    document.body.appendChild(form);
+    form.submit();
+}
+
+function cancelEdit(taskId) {
+    document.getElementById('edit-form-' + taskId).style.display = 'none'; // hide the edit form
+    
+    document.getElementById('task-text-' + taskId).style.display = 'inline'; // display the original text
+}
+
+function handleKey(event, taskId) {
+    if (event.key === 'Enter') {
+        saveTask(taskId);
+    } else if (event.key === 'Escape') {
+        cancelEdit(taskId);
+    }
+}
+</script>
+    </body>
+    </html>

@@ -66,6 +66,18 @@ def delete_task(task_id): # delete a task by its ID
     save_tasks(tasks) # save the updated tasks list without the deleted task
     return redirect(url_for('index'))
 
+@app.route('/edit/<int:task_id>', methods=['POST']) # edit a task by its ID
+def edit_task(task_id):
+    new_text = request.form.get('new_text')
+    if new_text:  # checking the text isn't empty
+        tasks = load_tasks()
+        for task in tasks:
+            if task['id'] == task_id:
+                task['text'] = new_text
+                break
+        save_tasks(tasks)
+    return redirect(url_for('index'))
+
 if __name__ == '__main__': # run the application
     # tell if there is an error in the code, display details information in the browser and refresh the page automatically when changes are made
     app.run(debug=True)
