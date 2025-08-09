@@ -78,9 +78,9 @@ def edit_task(task_id):
         save_tasks(tasks)
     return redirect(url_for('index'))
 
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(
+@app.route('/favicon.ico') # every browser automatically requests a favicon, this route handles that request
+def favicon(): # handle the request for the favicon
+    return send_from_directory( # send the favicon file from the static directory
         directory=app.static_folder, 
         path='images/taskmanager_icon.png',
         mimetype='image/png'
