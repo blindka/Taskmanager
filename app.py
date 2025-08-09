@@ -78,6 +78,13 @@ def edit_task(task_id):
         save_tasks(tasks)
     return redirect(url_for('index'))
 
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(
+        directory=app.static_folder, 
+        path='images/taskmanager_icon.png',
+        mimetype='image/png'
+    )
 if __name__ == '__main__': # run the application
     # tell if there is an error in the code, display details information in the browser and refresh the page automatically when changes are made
     app.run(debug=True)
