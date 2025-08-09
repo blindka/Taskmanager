@@ -3,11 +3,13 @@
     padding: 0; /*padding - the inner space of an element, between element and its content*/
     box-sizing: border-box; /*box-sizing - includes padding and border in the element's total width and height*/
 }
+
 body {
     font-family: Arial, sans-serif; /*font-family - sets the font for the text*/
     background-color: #f5f5f5; 
     padding: 20px;
 }
+
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -16,16 +18,19 @@ body {
     padding: 30px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1); /*box-shadow - adds a shadow effect to the element*/
 }
+
 h1 {
     text-align: center;
     color: #333;
     margin-bottom: 30px;
 }
+
 .add-form {
     display: flex;
     gap: 10px;
     margin-bottom: 30px;
 }
+
 .add-form input {
     flex: 1; /*flex - allows the input to grow and shrink as needed*/
     padding: 12px;
@@ -33,6 +38,7 @@ h1 {
     border-radius: 5px;
     font-size: 16px;
 }
+
 .add-form button {
     padding: 12px 20px;
     background: #007bff;
@@ -42,9 +48,11 @@ h1 {
     cursor: pointer; /*cursor - changes the mouse pointer when hovering over the element*/
     font-size: 16px;
 }
+
 .add-form button:hover { /*hover - applies styles when the mouse hovers over the element*/
     background: #0056b3;
 }
+
 .task-item {
     display: flex;
     justify-content: space-between; /*justify-content - aligns items along the main axis*/
@@ -55,40 +63,93 @@ h1 {
     margin-bottom: 10px;
     background: #fafafa;
 }
+
 .task-item.completed {
     opacity: 0.6; /*opacity - makes the element semi-transparent*/
     background: #e8f5e8;
 }
+
 .task-item.completed .task-text {
     text-decoration: line-through;
 }
+
 .task-text {
     flex: 1;
     font-size: 16px;
 }
+
 .task-date {
     font-size: 12px;
     color: #666;
     margin: 0 15px;
 }
+
 .task-actions {
     display: flex;
     gap: 10px;
 }
+
+.edit-btn {
+    background: #ffc107;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background: #e0a800;
+}
+
 .complete-btn, .delete-btn {
     padding: 8px;
     text-decoration: none;
     border-radius: 3px;
     font-size: 14px;
 }
+
 .complete-btn {
     background: #28a745;
     color: white;
 }
+
 .delete-btn {
     background: #dc3545;
     color: white;
 }
+
+.save-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.cancel-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 3px;
+}
+
+#edit-form input[type="text"] {
+    padding: 5px;
+    border: 2px solid #007bff;
+    border-radius: 3px;
+    font-size: 16px;
+    min-width: 200px;
+}
+
 .no-tasks {
     text-align: center;
     color: #666;
