@@ -23,14 +23,14 @@
             {% for task in tasks %}
             <div class="task-item {% if task.completed %}completed{% endif %}">
             <span class="task-text" id="task-text-{{ task.id }}">{{ task.text }}</span>
-            <form style="display: none;" id="edit-form-{{ task.id }}" onsubmit="saveTask({{ task.id }}); return false;">
-                <input type="text" id="edit-input-{{ task.id }}" value="{{ task.text|replace('"', '&quot;') }}" onkeyup="handleKey(event, {{ task.id }})">
-                <button type="button" onclick="saveTask({{ task.id }})" class="save-btn">✓</button>
-                <button type="button" onclick="cancelEdit({{ task.id }})" class="cancel-btn">✗</button>
+            <form style="display: none;" id="edit-form-{{ task.id }}">
+                <input type="text" id="edit-input-{{ task.id }}" value="{{ task.text|e }}" onkeyup="handleKey(event, '{{ task.id }}')">
+                <button type="button" onclick="saveTask('{{ task.id }}')" class="save-btn">✓</button>
+                <button type="button" onclick="cancelEdit('{{ task.id }}')" class="cancel-btn">&#10007;</button>
             </form>
             <span class="task-date">{{ task.created_at }}</span>
             <div class="task-actions">
-                <button type="button" onclick="editTask({{ task.id }})" class="edit-btn">✏️</button>
+                <button type="button" onclick="editTask('{{ task.id }}')" class="edit-btn">&#9998;</button>
                 {% if not task.completed %}
                 <a href="/complete/{{ task.id }}" class="complete-btn">✓</a>
                 {% endif %}
@@ -47,6 +47,17 @@
     </div>
 
     <script>
+    // Attach submit event listeners to all edit forms
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('[id^="edit-form-"]').forEach(function(form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var taskId = form.id.replace('edit-form-', '');
+                saveTask(taskId);
+            });
+        });
+    });
+
     function editTask(taskId) {
     // hide the original text
     document.getElementById('task-text-' + taskId).style.display = 'none';
