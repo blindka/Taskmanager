@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 600px;
     margin: 0 auto;
     background: white;
     border-radius: 10px; /*border-radius - rounds the corners of the element*/
@@ -57,7 +57,7 @@ h1 {
     display: flex;
     justify-content: space-between; /*justify-content - aligns items along the main axis*/
     align-items: center;
-    padding: 15px;
+    padding: 12px;
     border: 1px solid #eee;
     border-radius: 5px;
     margin-bottom: 10px;
