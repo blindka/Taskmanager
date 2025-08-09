@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    max-width: 600px;
+    max-width: 550px;
     margin: 0 auto;
     background: white;
     border-radius: 10px; /*border-radius - rounds the corners of the element*/
@@ -27,7 +27,7 @@ h1 {
 
 .add-form {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     margin-bottom: 30px;
 }
 
