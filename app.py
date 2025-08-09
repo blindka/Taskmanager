@@ -34,17 +34,38 @@ def index():
     tasks = load_tasks() # calls the function we created before (to load tasks)
     return render_template('index.html', tasks=tasks) # take html file and display it, passing the tasks to the template
 
-@app.route('/add', methods=['POST']) # add a new task, only accepts POST requests
-def add_task():
-    task_text = request.form.get('task')
+@app.route('/add', methods=['POST']) 
+def add_task(): # add a new task, only accepts POST requests
+    task_text = request.form.get('task') # looking 'task' field in the form data submitted by the user
     if task_text:
         tasks = load_tasks()
         new_task = {
             'id': len(tasks) + 1,
-            'text': task_text,
-            'completed': False,
-            'created_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            'text': task_text, # the text that the user entered in the form
+            'completed': False, # new task is not completed by default
+            'created_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S') # current date and time when the task was created
         }
-        tasks.append(new_task)
+        tasks.append(new_task) # add the new task to the list of tasks
         save_tasks(tasks)
+    return redirect(url_for('index')) # redirect the user back to the home page after adding the task
+
+@app.route('/complete/<int:task_id>') # complete a task by its ID
+def complete_task(task_id): # mark a task as completed
+    tasks = load_tasks()
+    for task in tasks: # over each task in the list
+        if task['id'] == task_id: # check if it is the task we want to complete
+            task['completed'] = True # mark the task as completed
+            break
+    save_tasks(tasks) # save the updated tasks list
+    return redirect(url_for('index')) # redirect the user back to the home page after completing the task to see the changes
+
+@app.route('/delete/<int:task_id>') # delete a task by its ID
+def delete_task(task_id): # delete a task by its ID
+    tasks = load_tasks() 
+    tasks = [task for task in tasks if task['id'] != task_id] # create a new list of tasks that does not include the task with the given ID
+    save_tasks(tasks) # save the updated tasks list without the deleted task
     return redirect(url_for('index'))
+
+if __name__ == '__main__': # run the application
+    # tell if there is an error in the code, display details information in the browser and refresh the page automatically when changes are made
+    app.run(debug=True)
