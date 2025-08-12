@@ -48,7 +48,7 @@ h1 {
 
 .add-form button {
     padding: 12px 20px;
-    background: #007bff;
+    background: #2176d1;
     color: white;
     border: none;
     border-radius: 5px;
@@ -132,7 +132,7 @@ h1 {
 }
 
 .delete-btn {
-    background: #8FA7EB;
+    background: #d1f19c;
     color: black;
 }
 
@@ -152,7 +152,7 @@ h1 {
     color: white;
     border: none;
     padding: 5px 8px;
-    border-radius: 8px;
+    border-radius: 3px;
     cursor: pointer;
     font-size: 12px;
     margin-left: 3px;
@@ -160,8 +160,8 @@ h1 {
 
 #edit-form input[type="text"] {
     padding: 5px;
-    border: 2px solid #007bff;
-    border-radius: 3px;
+    border: 3px solid #69b0fc;
+    border-radius: 5px;
     font-size: 16px;
     min-width: 200px;
 }

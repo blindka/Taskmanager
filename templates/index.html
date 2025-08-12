@@ -9,6 +9,7 @@
       type="image/png"
       href="{{ url_for('static', filename='images/taskmanager_icon.png') }}"
     />
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
@@ -39,9 +40,7 @@
             <a
               href="/delete/{{ task.id }}"
               class="delete-btn"
-              onclick="return confirm('Are you sure you want to delete this task?')"
-              >🗑️</a
-            >
+              onclick="return confirm('Are you sure you want to delete this task?')">♻️</a >
             {% if not task.completed %}
             <a href="/complete/{{ task.id }}" class="complete-btn">✓</a>
             {% endif %}
