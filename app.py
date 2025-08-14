@@ -44,7 +44,7 @@ def add_task(): # add a new task, only accepts POST requests
             'id': len(tasks) + 1,
             'text': task_text, # the text that the user entered in the form
             'completed': False, # new task is not completed by default
-            'created_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S') # current date and time when the task was created
+            'created_at': datetime.now().strftime('%Y-%m-%d %H:%M') # current date and time when the task was created
         }
         tasks.append(new_task) # add the new task to the list of tasks
         save_tasks(tasks)
