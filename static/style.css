@@ -42,18 +42,18 @@ h1 {
     /*flex - allows the input to grow and shrink as needed*/
     padding: 12px;
     border: 2px solid #ddd;
-    border-radius: 5px;
+    border-radius: 9px;
     font-size: 16px;
 }
 
 .add-form button {
     padding: 12px 20px;
-    background: #2176d1;
+    background: #3d96f5;
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
-    /*cursor - changes the mouse pointer when hovering over the element*/
+    cursor: pointer;    /*cursor - changes the mouse pointer when hovering over the element*/
+    border-radius: thin;
     font-size: 16px;
 }
 
@@ -68,8 +68,8 @@ h1 {
     /*justify-content - aligns items along the main axis*/
     align-items: center;
     padding: 12px;
-    border: 1px solid #eee;
-    border-radius: 5px;
+    border: 3px solid #eee;
+    border-radius: 7px;
     margin-bottom: 10px;
     background: #fafafa;
 }
