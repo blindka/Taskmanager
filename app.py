@@ -88,4 +88,4 @@ def favicon(): # handle the request for the favicon
     )
 if __name__ == '__main__': # run the application
     # tell if there is an error in the code, display details information in the browser and refresh the page automatically when changes are made
-    app.run(debug=True)
+    app.run(port=5050, debug=True)
