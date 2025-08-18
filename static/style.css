@@ -106,29 +106,17 @@ h1 {
 .task-date {
     font-size: 12px;
     color: #666;
-    margin: 0 10px;
+    margin-right: 10px;
 }
 
 .task-actions {
     display: flex;
     gap: 10px;
+    margin-left: auto;
+    flex-direction: row-reverse;
 }
 
-/* Base button styles */
-.btn-base {
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    min-width: 30px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 14px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
+/* (removed .btn-base to avoid duplication) */
 
 .edit-btn {
     background: #ffc107;
@@ -266,5 +254,3 @@ h1 {
 
 .task-item { direction: ltr; }
 .task-text { direction: ltr; text-align: left; }
-.task-actions { margin-left: auto; flex-direction: row-reverse; }
-.task-date { margin-right: 10px; }

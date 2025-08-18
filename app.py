@@ -22,8 +22,11 @@ TASKS_FILE = 'tasks.json'
 
 def load_tasks(): # Load tasks from the JSON file.
     if os.path.exists(TASKS_FILE): # check if the file/folders exists in the computer
-        with open(TASKS_FILE, 'r', encoding='utf-8') as f: # safe safe way to open a file, 'r' means read mode
-            return json.load(f) # return the content of the file as a Python object
+        try:  # add try-except for error handling
+            with open(TASKS_FILE, 'r', encoding='utf-8') as f: # safe safe way to open a file, 'r' means read mode
+                return json.load(f) # return the content of the file as a Python object
+        except (json.JSONDecodeError, IOError):
+            return []  # if the file is corrupted, return empty list
     return []
 
 def save_tasks(tasks): # save tasks to the JSON file.
@@ -37,11 +40,11 @@ def index():
 
 @app.route('/add', methods=['POST']) 
 def add_task(): # add a new task, only accepts POST requests
-    task_text = request.form.get('task') # looking 'task' field in the form data submitted by the user
-    if task_text:
+    task_text = request.form.get('task', '').strip() # looking 'task' field and remove whitespace
+    if task_text and len(task_text) <= 200:  # validate text length
         tasks = load_tasks()
         new_task = {
-            'id': len(tasks) + 1,
+            'id': max([task.get('id', 0) for task in tasks], default=0) + 1,  # safe ID generation
             'text': task_text, # the text that the user entered in the form
             'completed': False, # new task is not completed by default
             'created_at': datetime.now().strftime('%Y-%m-%d %H:%M') # current date and time when the task was created
@@ -69,8 +72,8 @@ def delete_task(task_id): # delete a task by its ID
 
 @app.route('/edit/<int:task_id>', methods=['POST']) # edit a task by its ID
 def edit_task(task_id):
-    new_text = request.form.get('new_text')
-    if new_text:  # checking the text isn't empty
+    new_text = request.form.get('new_text', '').strip()  # get new text and remove whitespace
+    if new_text and len(new_text) <= 200:  # validate text length
         tasks = load_tasks()
         for task in tasks:
             if task['id'] == task_id:
@@ -87,5 +90,6 @@ def favicon(): # handle the request for the favicon
         mimetype='image/png'
     )
 if __name__ == '__main__': # run the application
-    # tell if there is an error in the code, display details information in the browser and refresh the page automatically when changes are made
-    app.run(port=5050, debug=True)
+    port = int(os.environ.get('PORT', 5050))  # get port from environment
+    debug = os.environ.get('DEBUG', 'True').lower() == 'true'  # get debug mode
+    app.run(port=port, debug=debug)
