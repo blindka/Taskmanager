@@ -29,7 +29,7 @@
         <input
           type="text"
           name="task"
-          style="text-align: left"
+          style="text-align: left; direction: ltr"
           placeholder="Enter a new task"
           required
         />
@@ -42,7 +42,7 @@
           <span
             class="task-text"
             id="task-text-{{ task.id }}"
-            style="text-align: left"
+            style="text-align: left; direction: ltr"
             >{{ task.text }}</span
           >
 
@@ -75,6 +75,7 @@
               id="edit-input-{{ task.id }}"
               value="{{ task.text|e }}"
               onkeyup="handleKey(event, '{{ task.id }}')"
+              style="direction: ltr; text-align: left"
             />
             <button
               type="button"

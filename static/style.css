@@ -263,3 +263,8 @@ h1 {
     outline: 2px solid #3d96f5;
     outline-offset: 2px;
 }
+
+.task-item { direction: ltr; }
+.task-text { direction: ltr; text-align: left; }
+.task-actions { margin-left: auto; flex-direction: row-reverse; }
+.task-date { margin-right: 10px; }
